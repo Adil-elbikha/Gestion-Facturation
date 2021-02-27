@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\resources\views;
 use Illuminate\Http\Request;
 use App\Models\Produit;
+use Response;
 
 class ProduitController extends Controller
 {
@@ -68,6 +69,13 @@ class ProduitController extends Controller
     {
         $produit = Produit::find($id);
         return view('Produit.edit', compact('produit'));
+    }
+
+
+    public function getProduct($id)
+    {
+        $produit = Produit::find($id);
+        return Response::json($produit);
     }
 
     /**

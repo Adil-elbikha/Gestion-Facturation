@@ -33,12 +33,13 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 
 Route::resource('/Client',\App\Http\Controllers\ClientController::class);
 
-
+Route::get('/Facture/prod/{id}', [FactureController::class, 'getProd']);
 Route::resource('/Facture',\App\Http\Controllers\FactureController::class);
 
 Route::resource('/Produit',\App\Http\Controllers\ProduitController::class);
 Route::delete('/produit/{id}', [ProduitController::class, 'destroy']);
 
+Route::get('/prod/{id}', [ProduitController::class, 'getProduct']);
 
 
 

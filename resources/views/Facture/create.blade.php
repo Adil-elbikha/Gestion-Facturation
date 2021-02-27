@@ -6,13 +6,15 @@
         </h2>
     </x-slot>
 
+    
+
     <form method="POST" action="{{route('Facture.store')}}">
         <div class="container">
             <h1>Create Facture</h1>
             <div class="row" style="padding-top: 10px">
                 <div class="col-md-12">
                     <div class="card">
-                        <div class="card-header">Invoice Information</div>
+                       
 
                         <div class="card-body justify-content-center">
                             @csrf
@@ -29,11 +31,11 @@
                             
 
                             <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
+                            <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+                            <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+                            <!------ Include the above in your HEAD tag ---------->
 
-<div class="container">
+    <div class="container">
     <div class="row clearfix">
 		<div class="col-md-12 column">
         Produits:
@@ -60,6 +62,7 @@
 						</th>
 					</tr>
 				</thead>
+                
 				<tbody>
 					<tr id='addr0'>
 						<td>
@@ -69,7 +72,7 @@
                         <select class="form-control" id="produits_id" name="produits_id" <?php if (app('request')->input('clients_id')) echo ' hidden'; ?>>
                                 @forelse($produits as $produit)
                                     <option value="{{$produit->id}}" }}> {{$produit->nom}}</option>
-
+                                   
                                 @empty
                                     <p>No produits</p>
                                 @endforelse
@@ -77,25 +80,28 @@
 						<!--<input type="text" name='nom'  placeholder='Nom' class="form-control"/>-->
 						</td>
 						<td>
-						<input type="text" name='ref' placeholder='Reference' class="form-control"/>
+						<input type="text" id="ref" name='ref' placeholder='Reference' class="form-control"/>
+             
 						</td>
 						<td>
-						<input type="number" name='qte' placeholder='Quantité' class="form-control"/>
+						<input type="number" id="qte" name='qte' placeholder='Quantité' class="form-control"/>
 						</td>
                         <td>
-						<input type="text" name='pUni' placeholder='Prix Unitaire' class="form-control"/>
+						<input type="text" id="prixUnit" name='pUni' placeholder='Prix Unitaire' class="form-control"/>
 						</td>
                         <td>
-						<input type="text" name='mnt' placeholder='Montant' class="form-control"/>
+						<input type="text" id="Montanttotal"name='mnt' placeholder='Montant' class="form-control"/>
 						</td>
 					</tr>
                     <tr id='addr1'></tr>
 				</tbody>
+               
 			</table>
 		</div>
-	</div>
-	<a id="add_row" class="btn btn-default pull-left">Add Row</a><a id='delete_row' class="pull-right btn btn-default">Delete Row</a>
-</div>
+	    </div>
+	    <a id="add_row" class="btn btn-default pull-left">Add Row</a><a id='delete_row' class="pull-right btn btn-default">Delete Row</a>
+    </div>
+    
                             
                             Facteur Number:
                             <input type="text" name="Facture_number" value="" class="form-control"/>
@@ -108,9 +114,7 @@
                                 <option value="Amount">Amount</option>
                                 <option value="Percent">Percent</option>
                             </select>
-                            Private Notes:
-                            <textarea name="private_notes" class="form-control"></textarea>
-                            <br>
+                            
                             <br>
                             <input type="submit" value="Save" class="btn btn-primary">
                         </div>
@@ -123,6 +127,18 @@
     <script>
              $(document).ready(function(){
       var i=1;
+      $("#produits_id").change(function(){
+          $.ajax({
+            url: "/prod/" + $(this).val(),
+            success: function(data){
+                //var id = $id;
+                console.log(data)
+                $("#ref").val(data.reference);
+                $("#prixUnit").val(data.total);
+                
+            }
+          });
+    });
      $("#add_row").click(function(){
       $('#addr'+i).html("<td>"+ (i+1) +"</td><td><input name='nom"+i+"' type='text' placeholder='Nom' class='form-control input-md'  /> </td><td><input  name='ref"+i+"' type='text' placeholder='Reference'  class='form-control input-md'></td><td><input  name='qte"+i+"' type='number' placeholder='Quantité'  class='form-control input-md'></td><td><input  name='mnt"+i+"' type='text' placeholder='Prix Unitaire'  class='form-control input-md'></td><td><input  name='Montant"+i+"' type='text' placeholder='Montant'  class='form-control input-md'></td>");
 
@@ -136,6 +152,17 @@
 		 }
 	 });
 
-});
+
+     $("#produits_id").on('change', function(){
+    $.ajax({
+            url: "/Facture/" + $("#produits_id").val(),
+            success: function(data){
+                //var id = $id;
+                alert($id);
+            }
+          });
+    });
+     
+    });
     </script>
 </x-app-layout>

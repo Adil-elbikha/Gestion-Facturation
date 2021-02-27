@@ -50,6 +50,15 @@ class FactureController extends Controller
         return redirect()->route('Facture.index');
     }
 
+    public function getProd(Request $request)
+    {
+        $id = $request->route('id');
+        echo "<script>
+            console.log($id);
+        </script>";
+        //return view('Facture.create', ['id'=>$id]);
+    }
+
     /**
      * Display the specified resource.
      *
