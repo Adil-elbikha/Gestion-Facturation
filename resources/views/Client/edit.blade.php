@@ -5,11 +5,11 @@
 
     </h2>
 </x-slot>
-    <div class="card uper">
-        <div class="card-header">
-            <h4>Edit Product</h4>
-        </div>
-        <div class="card-body">
+    
+        <div class="w3-container w3-blue">
+            <h4>Edit Client</h4>
+        </div><br>
+        <div class="w3-container">
             @if ($errors->any())
                 <div class="alert alert-danger">
                     <ul>
@@ -28,22 +28,30 @@
                 @csrf
                 <div class="form-group">
                     <label for="prod_name">Client Name</label>
-                    <input type="text" class="form-control" name="nom"
+                    <input class="w3-input" type="text" class="form-control" name="nom"
                            value={{ $clients->nom }} >
-                </div>
+                </div><br>
                 <div class="form-group">
                     <label for="prod_desc">Client prenom</label>
-                    <input type="text" class="form-control" name="prenom"
+                    <input class="w3-input" type="text" class="form-control" name="prenom"
                            value={{ $clients->prenom }} >
-                </div>
+                </div><br>
                 <div class="form-group">
                     <label for="prod_price">Client telephone</label>
-                    <input type="text" class="tele" name="tel"
+                    <input class="w3-input" type="text" class="tele" name="tel"
                            value={{ $clients->tel }} >
-                </div>
+                </div><br>
 
                 <button type="submit" class="btn btn-primary">Update</button>
             </form>
         </div>
     </div>
+
+
+    
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<body>
+
 </x-app-layout>

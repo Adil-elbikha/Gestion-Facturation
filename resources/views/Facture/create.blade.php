@@ -80,17 +80,17 @@
 						<!--<input type="text" name='nom'  placeholder='Nom' class="form-control"/>-->
 						</td>
 						<td>
-						<input type="text" id="ref" name='ref' placeholder='Reference' class="form-control"/>
+						<input type="text" id="ref" name='ref' placeholder='Reference' class="form-control" readonly/>
              
 						</td>
 						<td>
-						<input type="number" id="qte" name='qte' placeholder='Quantité' class="form-control"/>
+						<input type="number" id="qte" name='qte' placeholder='Quantité' min="0"  oninput="calculerMontant()" class="form-control"/>
 						</td>
                         <td>
-						<input type="text" id="prixUnit" name='pUni' placeholder='Prix Unitaire' class="form-control"/>
+						<input type="text" id="prixUnit" name='pUni' placeholder='Prix Unitaire' class="form-control" readonly/>
 						</td>
                         <td>
-						<input type="text" id="Montanttotal"name='mnt' placeholder='Montant' class="form-control"/>
+						<input type="text" id="Montanttotal"name='mnt' placeholder='Montant' class="form-control" readonly/>
 						</td>
 					</tr>
                     <tr id='addr1'></tr>
@@ -140,7 +140,7 @@
           });
     });
      $("#add_row").click(function(){
-      $('#addr'+i).html("<td>"+ (i+1) +"</td><td><input name='nom"+i+"' type='text' placeholder='Nom' class='form-control input-md'  /> </td><td><input  name='ref"+i+"' type='text' placeholder='Reference'  class='form-control input-md'></td><td><input  name='qte"+i+"' type='number' placeholder='Quantité'  class='form-control input-md'></td><td><input  name='mnt"+i+"' type='text' placeholder='Prix Unitaire'  class='form-control input-md'></td><td><input  name='Montant"+i+"' type='text' placeholder='Montant'  class='form-control input-md'></td>");
+     $('#addr'+i).html("<td>"+ (i+1) +"</td><td><input name='nom"+i+"' type='text' placeholder='Nom' class='form-control input-md'  /> </td><td><input  name='ref"+i+"' type='text' placeholder='Reference'  class='form-control input-md' readonly></td><td><input  name='qte"+i+"' type='number' placeholder='Quantité'  class='form-control input-md'></td><td><input  name='mnt"+i+"' type='text' placeholder='Prix Unitaire'  class='form-control input-md' readonly></td><td><input  name='Montant"+i+"' type='text' placeholder='Montant'  class='form-control input-md' readonly></td>");
 
       $('#tab_logic').append('<tr id="addr'+(i+1)+'"></tr>');
       i++; 
@@ -164,5 +164,14 @@
     });
      
     });
+    function calculerMontant()
+    {
+        var qte = document.getElementById("qte").value;
+        var prixunitaire = document.getElementById("prixUnit").value;
+        if(qte>=0)
+        {
+            document.getElementById("Montanttotal").value=qte*prixunitaire;
+        }
+    }
     </script>
 </x-app-layout>

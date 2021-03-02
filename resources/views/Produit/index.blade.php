@@ -21,7 +21,7 @@
                 margin: 4px 2px;
                 cursor: pointer;
                 right: 10px;
-                float: left;
+                
                 position: relative;
             }
             table {
@@ -57,9 +57,9 @@
                         </div>
                         <form method="post" action="#" class="form-inline my-2 my-lg-0">
                             <input class="form-control mr-sm-2" type="text" placeholder="Search"
-                                   aria-label="Search">
+                                   aria-label="Search" style='float: right;'>
                             <button class="btn btn-outline-success my-2 my-sm-0"
-                                    type="submit">Search</button>
+                                    type="submit" style='float: right;'>Search</button>
                         </form>
 
 

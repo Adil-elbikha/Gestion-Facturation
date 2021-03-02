@@ -5,11 +5,11 @@
 
         </h2>
     </x-slot>
-    <div class="card uper">
-        <div class="card-header">
+    
+        <div class="w3-container w3-blue">
             <h4>Edit Product</h4>
-        </div>
-        <div class="card-body">
+        </div><br>
+        <div class="w3-container">
             @if ($errors->any())
                 <div class="alert alert-danger">
                     <ul>
@@ -21,29 +21,32 @@
                             </button>
                         @endforeach
                     </ul>
-                </div><br/>
+                </div><br>
             @endif
             <form method="post" action="{{ route('Produit.update', $produit->id) }}">
                 @method('PATCH')
                 @csrf
                 <div class="form-group">
-                    <label for="prod_name">nom</label>
-                    <input type="text" class="form-control" name="nom"
+                    <label for="prod_name">Nom</label>
+                    <input class="w3-input" type="text" class="form-control" name="nom"
                            value={{ $produit->nom }} >
-                </div>
+                </div><br>
                 <div class="form-group">
-                    <label for="prod_desc">reference</label>
-                    <input type="text" class="form-control" name="reference"
-                           value={{ $produit->refernce }} >
-                </div>
+                    <label for="prod_desc">Reference</label>
+                    <input class="w3-input"  type="text" class="form-control" name="reference"
+                           value={{ $produit->reference }} >
+                </div><br>
                 <div class="form-group">
-                    <label for="prod_price">total</label>
-                    <input type="text" class="total" name="total"
+                    <label  for="prod_price">Total</label>
+                    <input class="w3-input"  type="text" class="total" name="total"
                            value={{ $produit->total }} >
-                </div>
+                </div><br>
 
                 <button type="submit" class="btn btn-primary">Update</button>
             </form>
-        </div>
-    </div>
+        
+   
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<body>
 </x-app-layout>
