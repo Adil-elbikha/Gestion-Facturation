@@ -45,4 +45,5 @@ Route::get('/prod/{id}', [ProduitController::class, 'getProduct']);
 
 
 
+
 //Route::get('/Client',[\App\Http\Controllers\ClientController::class,'index'])->name('index.blade');

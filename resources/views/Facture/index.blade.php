@@ -5,174 +5,105 @@
 
         </h2>
     </x-slot>
+    <style>
+            .button {
+                background-color: #a0aec0;
+                border: none;
+                color: white;
+                padding: 20px 32px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 15px;
+                margin: 4px 2px;
+                cursor: pointer;
+                right: 10px;
+                
+                position: relative;
+            }
+            table {
+                border-collapse: collapse;
+
+                border: 1px solid #ddd;
+                width: 100%;
+                position: center;
+
+            }
+
+            th, td {
+                height: 70px;
+                padding: 10px;
+                text-align: left;
+                border-bottom: 1px solid #ddd;
+                vertical-align: bottom;
+            }
+            tr:nth-child(even) {
+                background-color: #f2f2f2;
+            }
+        </style>
     <div class="container">
-        <div class="row">
-                <div class="col-12">
+        <div class="row justify-content-center">
+            <div class="col-md-12">
+                <div class="card">
+                    
 
-                        <!-- Main content -->
-                        <div class="invoice p-3 mb-3">
-                          <!-- title row -->
-                          <div class="row">
-                            <div class="col-12">
-                              <h4>
-                                <i class="fa fa-globe"></i> AdminLTE, Inc.
-                                <small class="float-right">Date: 2/10/2018</small>
-                              </h4>
-                            </div>
-                            <!-- /.col -->
-                          </div>
-                          <!-- info row -->
-                          <div class="row invoice-info">
-                            <div class="col-sm-4 invoice-col">
-                              From
-                              <address>
-                                <strong>Admin, Inc.</strong><br>
-                                795 Folsom Ave, Suite 600<br>
-                                San Francisco, CA 94107<br>
-                                Phone: (804) 123-5432<br>
-                                Email: info@almasaeedstudio.com
-                              </address>
-                            </div>
-                            <!-- /.col -->
-                            <div class="col-sm-4 invoice-col">
-                              To
-                              <address>
-                                <strong>John Doe</strong><br>
-                                795 Folsom Ave, Suite 600<br>
-                                San Francisco, CA 94107<br>
-                                Phone: (555) 539-1037<br>
-                                Email: john.doe@example.com
-                              </address>
-                            </div>
-                            <!-- /.col -->
-                            <div class="col-sm-4 invoice-col">
-                              <b>Invoice #007612</b><br>
-                              <br>
-                              <b>Order ID:</b> 4F3S8J<br>
-                              <b>Payment Due:</b> 2/22/2014<br>
-                              <b>Account:</b> 968-34567
-                            </div>
-                            <!-- /.col -->
-                          </div>
-                          <!-- /.row -->
-
-                          <!-- Table row -->
-                          <div class="row">
-                            <div class="col-12 table-responsive">
-                              <table class="table table-striped">
-                                <thead>
-                                <tr>
-                                  <th>Qty</th>
-                                  <th>Product</th>
-                                  <th>Serial #</th>
-                                  <th>Description</th>
-                                  <th>Subtotal</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                  <td>1</td>
-                                  <td>Call of Duty</td>
-                                  <td>455-981-221</td>
-                                  <td>El snort testosterone trophy driving gloves handsome</td>
-                                  <td>$64.50</td>
-                                </tr>
-                                <tr>
-                                  <td>1</td>
-                                  <td>Need for Speed IV</td>
-                                  <td>247-925-726</td>
-                                  <td>Wes Anderson umami biodiesel</td>
-                                  <td>$50.00</td>
-                                </tr>
-                                <tr>
-                                  <td>1</td>
-                                  <td>Monsters DVD</td>
-                                  <td>735-845-642</td>
-                                  <td>Terry Richardson helvetica tousled street art master</td>
-                                  <td>$10.70</td>
-                                </tr>
-                                <tr>
-                                  <td>1</td>
-                                  <td>Grown Ups Blue Ray</td>
-                                  <td>422-568-642</td>
-                                  <td>Tousled lomo letterpress</td>
-                                  <td>$25.99</td>
-                                </tr>
-                                </tbody>
-                              </table>
-                            </div>
-                            <!-- /.col -->
-                          </div>
-                          <!-- /.row -->
-
-                          <div class="row">
-                            <!-- accepted payments column -->
-                            <div class="col-6">
-                              <p class="lead">Payment Methods:</p>
-                              <img src="https://adminlte.io/themes/dev/AdminLTE/dist/img/credit/visa.png" alt="Visa">
-                              <img src="https://adminlte.io/themes/dev/AdminLTE/dist/img/credit/mastercard.png" alt="Mastercard">
-                              <img src="https://adminlte.io/themes/dev/AdminLTE/dist/img/credit/american-express.png" alt="American Express">
-                              <img src="https://adminlte.io/themes/dev/AdminLTE/dist/img/credit/paypal2.png" alt="Paypal">
-
-                              <p class="text-muted well well-sm no-shadow" style="margin-top: 10px;">
-                                Etsy doostang zoodles disqus groupon greplin oooj voxy zoodles, weebly ning heekya handango imeem
-                                plugg
-                                dopplr jibjab, movity jajah plickers sifteo edmodo ifttt zimbra.
-                              </p>
-                            </div>
-                            <!-- /.col -->
-                            <div class="col-6">
-                              <p class="lead">Amount Due 2/22/2014</p>
-
-                              <div class="table-responsive">
-                                <table class="table">
-                                  <tbody><tr>
-                                    <th style="width:50%">Subtotal:</th>
-                                    <td>$250.30</td>
-                                  </tr>
-                                  <tr>
-                                    <th>Tax (9.3%)</th>
-                                    <td>$10.34</td>
-                                  </tr>
-                                  <tr>
-                                    <th>Shipping:</th>
-                                    <td>$5.80</td>
-                                  </tr>
-                                  <tr>
-                                    <th>Total:</th>
-                                    <td>$265.24</td>
-                                  </tr>
-                                </tbody></table>
-                              </div>
-                            </div>
-                            <!-- /.col -->
-                          </div>
-                          <!-- /.row -->
-
-                          <!-- this row will not appear when printing -->
-                          <div class="row no-print">
-                            <div class="col-12">
-
-                              <a href="" @click.prevent="printme" target="_blank" class="btn btn-default"><i class="fa fa-print"></i> Print</a>
-                              <button type="button" class="btn btn-success float-right">
-                                  <i class="fa fa-credit-card"></i>
-                                  Submit Payment
-                              </button>
-
-                              <button type="button" class="btn btn-primary float-right" style="margin-right: 5px;">
-                                <i class="fa fa-download"></i> Generate PDF
-                              </button>
-
-                            </div>
-                          </div>
-
+                    <div class="card-body">
+                    <div class="button">
+                        <a href="{{route('Facture.create')}}" class="btn btn-sm btn-primary">Create New Factures</a>
                         </div>
-                        <!-- /.invoice -->
-                      </div>
+                        <form method="post" action="#" class="form-inline my-2 my-lg-0">
+                            <input class="form-control mr-sm-2" type="text" placeholder="Search"
+                                   aria-label="Search" style='float: right;'>
+                            <button class="btn btn-outline-success my-2 my-sm-0"
+                                    type="submit" style='float: right;'>Search</button>
+                        </form>
 
+                        <table class="table table-responsive-sm">
+                            <thead>
+                                <th>Facteur Number</th>
+                                <th>Client Name</th>
+                                <th>Total</th>
+                                <th>Balance</th>
+                                
+                                
+                                <th></th>
+                            </thead>
+                            <tbody>
+                            @forelse($factures as $Facteur)
 
+                                <tr>
+                                    <td>{{$Facteur->facteur_number}}</td>
+                                    <td>{{$Facteur->client->first_name}} {{$Facteur->client->last_name}}</td>
+                                    <td>${{number_format($Facteur->Total, 2)}}</td>
+                                    <td>${{number_format($Facteur->balance, 2)}}</td>
+                                    <td>  <?php if ($invoice->due_date ==! null) echo date("F d, Y", strtotime($invoice->due_date));?></td>
+                                    
+                                    <td lass="px-4 py-3"> <a href="{{ route('facteur.edit', $facteur->id) }}" class="bg-yellow-400 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded">edit</a>
+                                     <td class="px-4 py-3">
+                                        <form action="/facteur/{{$Facteur->id}}" method="post">
+                                            @method('DELETE')
+
+                                            @csrf
+                                    <button
+                                        type="submit"
+                                        class="bg-red-600 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded">
+                                        delete
+                                    </button>
+                                </tr>
+
+                            @empty
+                                <tr>
+                                    <td colspan="2">No records found</td>
+                                </tr>
+                            @endforelse
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-
+    </div>
+    </div>
 
 </x-app-layout>

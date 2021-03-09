@@ -55,13 +55,23 @@
                         <div class="button">
                             <a href="{{route('Client.create')}}" class="btn btn-sm btn-primary"> New Client</a>
                         </div>
-                        <form method="post" action="#" class="form-inline my-2 my-lg-0">
+                        <!--<form method="post" action="#" class="form-inline my-2 my-lg-0">
                             <input class="form-control mr-sm-2" type="text" placeholder="Search"
                                    aria-label="Search" style='float: right;'>
                             <button class="btn btn-outline-success my-2 my-sm-0" style='float: right;'
                                     type="submit">Search
                             </button>
-                        </form>
+                        </form>-->
+                        <form>
+  <div>
+    <label for="mySearch">Rechercher un produit par son code :</label>
+    <input type="search" id="mySearch" name="q"
+    placeholder="2 lettres puis 4 chiffres" required
+    size="30" pattern="[A-z]{2}[0-9]{4}">
+    <button>Rechercher</button>
+    <span class="validity"></span>
+  </div>
+</form>
 
 
                         <table class="table table-responsive-sm">

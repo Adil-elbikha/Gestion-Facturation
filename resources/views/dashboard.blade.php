@@ -74,7 +74,7 @@
   <div class="column" >
   <div class="container">
     <div class="card" style="width:350px">
-    <img class="card-img-top" src="images/x.jpeg" alt="Card image" style="width:100%">
+    <img class="card-img-top" src="images/cc.jpg" alt="Card image" style="width:100%">
     <div class="card-body">
       
       <p class="card-text">Ajouter les Factures</p>

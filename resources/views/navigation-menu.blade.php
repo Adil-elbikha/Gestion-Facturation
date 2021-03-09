@@ -28,7 +28,7 @@
                                     {{ __('Product') }}
                                 </x-jet-nav-link>
                                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                                    <x-jet-nav-link href="{{ route('Facture.create') }}" :active="request()->routeIs('/Facture')">
+                                    <x-jet-nav-link href="{{ route('Facture.index') }}" :active="request()->routeIs('/Facture')">
                                         {{ __('Facture') }}
                                     </x-jet-nav-link>
 

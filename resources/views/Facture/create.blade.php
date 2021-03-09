@@ -17,6 +17,10 @@
                        
 
                         <div class="card-body justify-content-center">
+
+                        Facteur Number:
+                            <input type="text" name="Facture_number"  class="form-control" value="" class="form-control"/>
+                           
                             @csrf
                             Clients:
                             <select class="form-control" id="clients_id" name="clients_id" <?php if (app('request')->input('clients_id')) echo ' hidden'; ?>>
@@ -29,7 +33,8 @@
                             </select>
                             <br>
                             
-
+                            
+                            
                             <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
                             <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
                             <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
@@ -79,7 +84,7 @@
                             </select>
 						<!--<input type="text" name='nom'  placeholder='Nom' class="form-control"/>-->
 						</td>
-						<td>
+						<td >
 						<input type="text" id="ref" name='ref' placeholder='Reference' class="form-control" readonly/>
              
 						</td>
@@ -97,19 +102,44 @@
 				</tbody>
                
 			</table>
-		</div>
-	    </div>
+		
 	    <a id="add_row" class="btn btn-default pull-left">Add Row</a><a id='delete_row' class="pull-right btn btn-default">Delete Row</a>
     </div>
     
+</body>
+    <div class="row clearfix" style="margin-top:20px">
+    <div class="pull-right col-md-4">
+      <table class="table table-bordered table-hover" id="tab_logic_total">
+        <tbody>
+          <tr>
+            <th class="text-center">Sub Total</th>
+            <td class="text-center"><input type="number" name='sub_total' placeholder='0.00' class="form-control" id="sub_total" readonly/></td>
+          </tr>
+          <tr>
+            <th class="text-center">Tax</th>
+            <td class="text-center"><div class="input-group mb-2 mb-sm-0">
+                <input type="number" class="form-control" id="tax" placeholder="0">
+                <div class="input-group-addon">%</div>
+              </div></td>
+          </tr>
+          <tr>
+            <th class="text-center">Tax Amount</th>
+            <td class="text-center"><input type="number" name='tax_amount' id="tax_amount" placeholder='0.00' class="form-control" readonly/></td>
+          </tr>
+          <tr>
+            <th class="text-center">Grand Total</th>
+            <td class="text-center"><input type="number" name='total_amount' id="total_amount" placeholder='0.00' class="form-control" readonly/></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+    
                             
-                            Facteur Number:
-                            <input type="text" name="Facture_number" value="" class="form-control"/>
                             Facture Date:
                             <input type="date" name="Facture_date" value="{{ date('Y-m-d') }}" class="form-control"/>
                             Due Date:
-                            <input type="date" name="due_date" class="form-control"/>
-                            <input type="text" name="discount" class="form-control" hidden/>
+                            
                             <select class="form-control" id="discount_type" name="discount_type" hidden>
                                 <option value="Amount">Amount</option>
                                 <option value="Percent">Percent</option>
@@ -139,12 +169,18 @@
             }
           });
     });
-     $("#add_row").click(function(){
-     $('#addr'+i).html("<td>"+ (i+1) +"</td><td><input name='nom"+i+"' type='text' placeholder='Nom' class='form-control input-md'  /> </td><td><input  name='ref"+i+"' type='text' placeholder='Reference'  class='form-control input-md' readonly></td><td><input  name='qte"+i+"' type='number' placeholder='Quantité'  class='form-control input-md'></td><td><input  name='mnt"+i+"' type='text' placeholder='Prix Unitaire'  class='form-control input-md' readonly></td><td><input  name='Montant"+i+"' type='text' placeholder='Montant'  class='form-control input-md' readonly></td>");
-
+     $("#add_row").click(function(){b=i-1;
+    //$('#addr'+i).html("<td>"+ (i+1) +"</td><td><input name='nom"+i+"' type='text' placeholder='Nom' class='form-control input-md'  /> </td><td><input  name='ref"+i+"' type='text' placeholder='Reference'  class='form-control input-md' readonly></td><td><input  name='qte"+i+"' type='number' placeholder='Quantité'  class='form-control input-md'></td><td><input  name='mnt"+i+"' type='text' placeholder='Prix Unitaire'  class='form-control input-md' readonly></td><td><input  name='Montant"+i+"' type='text' placeholder='Montant'  class='form-control input-md' readonly></td>");
+     $('#addr'+i).html($('#addr'+b).html()).find('td:first-child').html(i+1);
+     
+    
       $('#tab_logic').append('<tr id="addr'+(i+1)+'"></tr>');
+       
       i++; 
+      
   });
+    
+
      $("#delete_row").click(function(){
     	 if(i>1){
 		 $("#addr"+(i-1)).html('');
@@ -159,6 +195,7 @@
             success: function(data){
                 //var id = $id;
                 alert($id);
+                
             }
           });
     });
@@ -171,7 +208,36 @@
         if(qte>=0)
         {
             document.getElementById("Montanttotal").value=qte*prixunitaire;
-        }
+       }
+        //calc_total();
+        //$(this).find('.Montanttotal').val(qte*prixunitaire);
     }
+
+    //////////////////////////////////
+    $(".product").on('change',function(){
+	    option_checker(this)
+	});
+	
+	
+	$('#tab_logic tbody').on('keyup change',function(){
+		//calc();
+	});
+	$('#tax').on('keyup change',function(){
+		calc_total();
+	});
+
+function calc_total()
+{
+	Montanttotal=0;
+	$(".Montanttotal").each(function() {
+        Montanttotal += parseInt($(this).val());
+    });
+	$('#sub_total').val(Montanttotal.toFixed(2));
+	tax_sum=Montanttotal/100*$('#tax').val();
+	$('#tax_amount').val(tax_sum.toFixed(2));
+	$('#total_amount').val((tax_sum+Montanttotal).toFixed(2));
+}
+	
+    
     </script>
 </x-app-layout>
